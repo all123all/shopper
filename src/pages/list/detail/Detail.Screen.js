@@ -1,18 +1,64 @@
-import { View, ScrollView, Image, TouchableOpacity, ImageBackground } from "react-native"
+import React, { Component } from "react";
+import { View, ScrollView, TouchableOpacity, ImageBackground, Modal } from "react-native"
 import { detailStyle } from "./Detail.Style"
-import { Button, Input, Text, ListItem, Avatar, FAB } from 'react-native-elements';
+import { Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function Detail() {
-    return(
-        
+class Detail extends Component {
+    state = {
+        modalVisible: false //change to false
+    };
+
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
+    }
+    render(){
+        const { modalVisible } = this.state;
+        return(
             <ImageBackground source={require('../../../img/2.jpg')} resizeMode="cover"  style={detailStyle.bgImg}>
                 <ScrollView style={detailStyle.safeAreaView}>
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                            Alert.alert("Modal has been closed.");
+                            this.setModalVisible(!modalVisible);}}
+                    >
+                        <View style={detailStyle.centeredView}>
+                            <View style={detailStyle.modalView}>
+                                <Icon
+                                    name="check-circle"
+                                    size={65}
+                                    color="#82b440"
+                                />
+                                <Text style={detailStyle.modalText}>Success! This album now is in your Cart.</Text>
+                                <View style={detailStyle.modalBtnContainer}>
+                                    <TouchableOpacity style={detailStyle.btnModalReturn} onPress={() => this.setModalVisible(!modalVisible)} >
+                                        <Icon
+                                            name='arrow-circle-o-left'
+                                            size={18}
+                                            style={detailStyle.btnReturnIcon}
+                                        />
+                                        <Text style={detailStyle.btnReturnText}>Return</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={detailStyle.btnModalCart} onPress={() => this.setModalVisible(!modalVisible)} >
+                                        <Text style={detailStyle.btnBuyText}>View cart</Text>
+                                        <Icon
+                                            name='shopping-cart'
+                                            size={18}
+                                            style={detailStyle.btnBuyIcon}
+                                        />
+                                    </TouchableOpacity>                                    
+                                </View>                            
+                            </View>
+                        </View>
+                    </Modal>
                     <View style={detailStyle.coverContainer}></View>
                     <View style={detailStyle.mainContainer}>
                         <View style={detailStyle.titleInfoView} >
                             <Text style={detailStyle.albumTitle} >Starboy</Text>
-                            <TouchableOpacity style={detailStyle.btnAdd}>
+                            <TouchableOpacity style={detailStyle.btnAdd} onPress={() => this.setModalVisible(true)} >
                                 <Text style={detailStyle.btnAddText} >Add to cart</Text>
                                 <Icon
                                     name='shopping-cart'
@@ -43,11 +89,12 @@ export default function Detail() {
                                     style={detailStyle.btnBuyIcon}
                                 />
                             </TouchableOpacity>
-                        </View>
-                        
+                        </View>                  
                     </View>
                 </ScrollView>
             </ImageBackground>
-        
-    )
+        )
+    }
 }
+
+export default Detail;
