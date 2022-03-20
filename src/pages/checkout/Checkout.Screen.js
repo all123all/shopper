@@ -4,29 +4,73 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { checkoutStyle } from "./Checkout.Style";
 
 export default function Checkout() {
-    const albums = [
-        {
-            artistName: 'The Weeknd',
-            albumCover: 'https://upload.wikimedia.org/wikipedia/pt/3/39/The_Weeknd_-_Starboy.png',
-            albumName: 'Starboy',
-            price: 9.99
-        },
-        {
-            artistName: 'Rome',
-            albumCover: 'https://www.clear-spot.nl/public/img/I00/464/I00464134.jpg',
-            albumName: 'Who Only Europe Know',
-            price: 9.99
-        },
-        {
-            artistName: 'Arctic Monkeys',
-            albumCover: 'http://www.clicrbs.com.br/blog/fotos/195142post_foto.jpg',
-            albumName: 'Humbug',
-            price: 9.99
-        },
-      ]
     return(
-        <View style={checkoutStyle.safeAreaView}>
-            
-        </View>
+        <SafeAreaView style={checkoutStyle.safeAreaView}>
+            <View style={checkoutStyle.headerContainer}>
+                <TouchableOpacity style={checkoutStyle.headerReturnBtn}>
+                    <Icon
+                        style={checkoutStyle.headerReturnBtnIcon}
+                        name="arrow-circle-o-left"
+                        size={25}
+                    />
+                </TouchableOpacity>
+                <Text style={checkoutStyle.headerText}>CHECK OUT</Text>
+            </View>
+            <View style={checkoutStyle.inputContainer}>
+                <Text style={checkoutStyle.midContainerText}>CREDIT CARD DETAILS</Text>
+                <View style={checkoutStyle.firstLine}>
+                    <TextInput
+                        maxLength={19}
+                        keyboardType="numeric"
+                        placeholder="Card Number"
+                        style={checkoutStyle.inputCardNumber}
+                    />
+                    <Icon name="cc-mastercard" size={30} color="#2288dc"/> 
+                </View>
+                <View style={checkoutStyle.secondLine}>
+                    <TextInput
+                        placeholder="Cardholder name"
+                        style={checkoutStyle.inputName}
+                    />
+                    <Icon name="user-circle" size={30} color="#2288dc"/>
+                </View>
+                <View style={checkoutStyle.thirdLine}>
+                    <TextInput
+                        placeholder="00"
+                        maxLength={2}
+                        keyboardType="numeric"
+                        style={checkoutStyle.inputNum}
+                    />
+                    <TextInput
+                        placeholder="0000"
+                        maxLength={4}
+                        keyboardType="numeric"
+                        style={checkoutStyle.inputNum}
+                    />
+                    <TextInput
+                        placeholder="CVV"
+                        keyboardType="numeric"
+                        style={checkoutStyle.inputNum}
+                        
+                    />
+                </View>
+            </View>
+            <View style={checkoutStyle.midContainer}>
+                <Icon
+                    style={checkoutStyle.midIcon}
+                    name="credit-card"
+                    size={75}
+                />
+                <Text style={checkoutStyle.midContainerValue}>U$ 55.95</Text>
+            </View>
+            <View style={checkoutStyle.paymentContainer}>
+                <TouchableOpacity
+                    onPress={() => {}}
+                    style={checkoutStyle.paymentBtn}
+                >
+                    <Text style={checkoutStyle.paymentText}>Confirm Payment</Text>
+                </TouchableOpacity>
+            </View>
+        </SafeAreaView>
     )
 }

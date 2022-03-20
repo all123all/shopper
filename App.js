@@ -5,6 +5,7 @@ import List from './src/pages/list/List.Screen';
 import Detail from './src/pages/list/detail/Detail.Screen';
 import Cart from './src/pages/cart/Cart.Screen';
 import Checkout from './src/pages/checkout/Checkout.Screen';
+import Message from './src/pages/checkout/message/Message.Screen';
 
 export default function App() {
   return (
@@ -13,7 +14,8 @@ export default function App() {
     // <Home />
     // <List />
     // <Cart />
-    <Checkout />
+    // <Checkout />
+    <Message />
   );
 }
 
