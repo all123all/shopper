@@ -62,7 +62,7 @@ export default function List() {
                         </ListItem.Content>
                     </ListItem>
                 ))}
-            </View>            
+            </View>
         </ScrollView>
     )
 }

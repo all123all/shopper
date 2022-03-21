@@ -8,10 +8,10 @@ export default function Message() {
         <SafeAreaView style={messageStyle.safeAreaView}>
             <View style={messageStyle.mainContainer}>
                 <Icon
-                    name="flag-checkered"
+                    name="check-circle"
                     size={150}
                     style={messageStyle.icon}
-                    color="#82b440"
+                    color="#2288dc"
                 />
                 <Text style={messageStyle.mainText}>Success! Now you can return. Just press the button bellow</Text>
                 <TouchableOpacity style={messageStyle.btn} onPress={() => {}}>
