@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { Icon, ListItem, Input } from 'react-native-elements';
 import { shoppingStyle } from './Shopping.Style';
 
-export default function Shopping() {
+export default function Shopping({navigation}) {
     const users = [
         {
             userName: 'John Doe',
@@ -25,6 +25,7 @@ export default function Shopping() {
                         name="arrow-left"
                         size={50}
                         color="#696969"
+                        onPress={() => navigation.navigate('Admin')}
                     />
                 </TouchableOpacity>                
                 <Text style={shoppingStyle.headerText}>VIEW ALL PURCHASES</Text>

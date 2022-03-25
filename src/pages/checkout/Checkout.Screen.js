@@ -1,17 +1,17 @@
 import { SafeAreaView, View, ActivityIndicator, ScrollView, TouchableOpacity, TextInput } from "react-native"
-import { Button, Text, ListItem, Avatar, Image, FAB } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button, Text, ListItem, Avatar, Image, FAB, Icon } from 'react-native-elements';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import { checkoutStyle } from "./Checkout.Style";
 
-export default function Checkout() {
+export default function Checkout({navigation}) {
     return(
         <SafeAreaView style={checkoutStyle.safeAreaView}>
             <View style={checkoutStyle.headerContainer}>
-                <TouchableOpacity style={checkoutStyle.headerReturnBtn}>
+                <TouchableOpacity style={checkoutStyle.headerReturnBtn} onPress={() => navigation.goBack()}>
                     <Icon
                         style={checkoutStyle.headerReturnBtnIcon}
-                        name="arrow-circle-o-left"
-                        size={25}
+                        name="arrow-left"
+                        size={50}
                     />
                 </TouchableOpacity>
                 <Text style={checkoutStyle.headerText}>CHECK OUT</Text>
@@ -25,14 +25,14 @@ export default function Checkout() {
                         placeholder="Card Number"
                         style={checkoutStyle.inputCardNumber}
                     />
-                    <Icon name="cc-mastercard" size={30} color="#2288dc"/> 
+                    <Icon name="cc-mastercard" size={30} color="#2288dc" type='font-awesome'/> 
                 </View>
                 <View style={checkoutStyle.secondLine}>
                     <TextInput
                         placeholder="Cardholder name"
                         style={checkoutStyle.inputName}
                     />
-                    <Icon name="user-circle" size={30} color="#2288dc"/>
+                    <Icon name="user-circle" size={30} color="#2288dc" type='font-awesome'/>
                 </View>
                 <View style={checkoutStyle.thirdLine}>
                     <TextInput
@@ -65,7 +65,7 @@ export default function Checkout() {
             </View>
             <View style={checkoutStyle.paymentContainer}>
                 <TouchableOpacity
-                    onPress={() => {}}
+                    onPress={() => navigation.navigate('Message')}
                     style={checkoutStyle.paymentBtn}
                 >
                     <Text style={checkoutStyle.paymentText}>Confirm Payment</Text>

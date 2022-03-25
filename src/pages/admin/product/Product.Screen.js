@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { Input, Divider, ListItem, Icon } from 'react-native-elements';
 import { productStyle } from './Product.Style';
 
-export default function Product() {
+export default function Product({navigation}) {
     const users = [
         {
             albumName: 'Exemplo 1',
@@ -19,6 +19,7 @@ export default function Product() {
                         name="arrow-left"
                         size={50}
                         color="#696969"
+                        onPress={() => navigation.navigate('Admin')}
                     />
                 </TouchableOpacity>                
                 <Text style={productStyle.headerText}>REGISTER NEW PRODUCT HERE</Text>

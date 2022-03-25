@@ -14,6 +14,11 @@ class Detail extends Component {
     }
     render(){
         const { modalVisible } = this.state;
+
+        const handleViewCart = () => {
+            this.setModalVisible(!modalVisible)
+            this.props.navigation.navigate('Cart')
+        }
         return(
             <ImageBackground source={require('../../../img/2.jpg')} resizeMode="cover"  style={detailStyle.bgImg}>
                 <ScrollView style={detailStyle.safeAreaView}>
@@ -42,7 +47,7 @@ class Detail extends Component {
                                         />
                                         <Text style={detailStyle.btnReturnText}>Return</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={detailStyle.btnModalCart} onPress={() => this.setModalVisible(!modalVisible)} >
+                                    <TouchableOpacity style={detailStyle.btnModalCart} onPress={() => handleViewCart()} >
                                         <Text style={detailStyle.btnBuyText}>View cart</Text>
                                         <Icon
                                             name='shopping-cart'
@@ -73,7 +78,7 @@ class Detail extends Component {
                         </View>
                         <Text style={detailStyle.albumDesc}>Starboy is the third studio album by Canadian singer-songwriter the Weeknd, released on November 25, 2016, through XO and Republic Records. It features guest appearances from Daft Punk, Lana Del Rey, Kendrick Lamar, and Future. As the album's executive producers, the Weeknd and Doc McKinney enlisted a variety of producers such as Diplo, Cashmere Cat, Metro Boomin, Frank Dukes, and Labrinth, among others. Starboy is the third studio album by Canadian singer-songwriter the Weeknd, released on November 25, 2016, through XO and Republic Records. It features guest appearances from Daft Punk, Lana Del Rey, Kendrick Lamar, and Future. As the album's executive producers, the Weeknd and Doc McKinney enlisted a variety of producers such as Diplo, Cashmere Cat, Metro Boomin, Frank Dukes, and Labrinth, among others. </Text>
                         <View style={detailStyle.floatingAction}>
-                            <TouchableOpacity style={detailStyle.btnReturn} >
+                            <TouchableOpacity style={detailStyle.btnReturn} onPress={() => this.props.navigation.navigate('List')}>
                                 <Icon
                                     name='arrow-circle-o-left'
                                     size={29}
@@ -81,7 +86,7 @@ class Detail extends Component {
                                 />
                                 <Text style={detailStyle.btnReturnText} >Return</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={detailStyle.btnBuy} >
+                            <TouchableOpacity style={detailStyle.btnBuy} onPress={() => this.props.navigation.navigate('Checkout')}>
                                 <Text style={detailStyle.btnBuyText} >Buy Now!</Text>
                                 <Icon
                                     name='dollar'

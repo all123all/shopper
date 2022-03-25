@@ -18,7 +18,7 @@ export const checkoutStyle = StyleSheet.create({
     },
     headerReturnBtnIcon: {
         color: '#757575',
-        padding: 15
+        // padding: 15
     },
     headerText: {
         color: '#000',

@@ -4,7 +4,7 @@ import { Button, Input, Text, ListItem, Avatar, Image } from 'react-native-eleme
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from "react-native-web";
 
-export default function List() {
+export default function List({navigation}) {
 
     const albums = [
         {
@@ -29,21 +29,9 @@ export default function List() {
 
     return(
         <ScrollView style={listStyle.safeAreaView} >
-            <View style={listStyle.headerContainer} >
-                <Input
-                    placeholder="Search for albums..."
-                    inputStyle={listStyle.headerInput}
-                    leftIcon={
-                        <Icon
-                          name='search'
-                          size={19}
-                          style={listStyle.headerInputIcon}
-                        />
-                    }/>
-            </View>
             <View style={listStyle.mainContainer} >
                 {albums.map((l, i) => (
-                    <ListItem key={i} bottomDivider onPress={() => {}} style={listStyle.albumCard} >
+                    <ListItem key={i} bottomDivider onPress={() => navigation.navigate('Detail')} style={listStyle.albumCard} >
                         <Image
                             source={{uri: l.albumCover}}
                             style={listStyle.albumCover}
@@ -56,7 +44,7 @@ export default function List() {
                             </View>
                             <Icon
                                 name="shopping-cart"
-                                onPress={() => {console.log('alart')}}
+                                onPress={() => navigation.navigate('Checkout')}
                                 style={listStyle.albumAddCardIcon}
                                 size={30}/>
                         </ListItem.Content>

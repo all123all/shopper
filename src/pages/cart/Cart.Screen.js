@@ -3,7 +3,7 @@ import { Button, Text, ListItem, Avatar, Image, FAB } from 'react-native-element
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { cartStyle } from "./Cart.Style";
 
-export default function Cart() {
+export default function Cart({navigation}) {
     const albums = [
         {
             artistName: 'The Weeknd',
@@ -27,12 +27,12 @@ export default function Cart() {
     return(
         <View style={cartStyle.safeAreaView}>
             <View style={cartStyle.floatingContainer}>
-                <TouchableOpacity style={cartStyle.floatingContainerBtnCancel} >
+                <TouchableOpacity style={cartStyle.floatingContainerBtnCancel} onPress={() => navigation.navigate('List')}>
                     <Text style={cartStyle.floatingContainerBtnCancelText}>Cancel</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={cartStyle.floatingContainerBtnContinue}
-                    onPress={() => {}}>
+                    onPress={() => navigation.navigate('Checkout')}>
                     <Text style={cartStyle.floatingContainerBtnContinueText}>Pay now!</Text>
                 </TouchableOpacity>
             </View>

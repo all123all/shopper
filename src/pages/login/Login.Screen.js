@@ -3,7 +3,7 @@ import { loginStyle } from "./Login.Style"
 import { Button, Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Login =({navigation}) => {
+function Login({navigation}) {
     return(
         <SafeAreaView style={loginStyle.safeAreaView} >
             <View style={loginStyle.mainContainer} >
@@ -37,13 +37,13 @@ const Login =({navigation}) => {
                     <Button
                         title="Login"
                         buttonStyle={loginStyle.loginBtn}
-                        onPress={() => navigation.navigate('List')}
+                        onPress={() => navigation.navigate('UserNavigator')}
                     />
                     <Button
                         title="I'm an Admin"
                         type="outline"
                         buttonStyle={loginStyle.forgotBtn}
-                        onPress={() => {}}y
+                        onPress={() => navigation.navigate('Admin')}
                     />
                 </View>
             </View>
