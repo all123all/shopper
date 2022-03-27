@@ -15,6 +15,7 @@ import Admin from './pages/admin/Admin.Screen';
 import User from './pages/admin/user/User.Screen';
 import Product from './pages/admin/product/Product.Screen';
 import Shopping from './pages/admin/shopping/Shopping.Screen';
+import Register from './pages/register/Register.Screen';
 
 const { Navigator, Screen } = createStackNavigator();
 const Stack = createStackNavigator();
@@ -40,6 +41,7 @@ const AppNavigator = () => (
             <Stack.Screen name="Shopping" component={Shopping}></Stack.Screen>
             <Stack.Screen name="User" component={User}></Stack.Screen>
             <Stack.Screen name="Product" component={Product}></Stack.Screen>
+            <Stack.Screen name="Register" component={Register}></Stack.Screen>
         </Stack.Navigator>
     </NavigationContainer>
 )

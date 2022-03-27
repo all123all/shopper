@@ -6,21 +6,22 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 class Detail extends Component {
     state = {
-        modalVisible: false //change to false
+        modalVisible: false
     };
-
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
     }
     render(){
         const { modalVisible } = this.state;
+        const {artist, name, cover, description, price} = this.props.route.params;
+        const coverImg = {uri: cover}
 
         const handleViewCart = () => {
             this.setModalVisible(!modalVisible)
             this.props.navigation.navigate('Cart')
         }
         return(
-            <ImageBackground source={require('../../../img/2.jpg')} resizeMode="cover"  style={detailStyle.bgImg}>
+            <ImageBackground source={coverImg} resizeMode="cover"  style={detailStyle.bgImg}>
                 <ScrollView style={detailStyle.safeAreaView}>
                     <Modal
                         animationType="slide"
@@ -37,21 +38,21 @@ class Detail extends Component {
                                     size={65}
                                     color="#82b440"
                                 />
-                                <Text style={detailStyle.modalText}>Success! This album now is in your Cart.</Text>
+                                <Text style={detailStyle.modalText}>Success! The album {name} now is in your Cart.</Text>
                                 <View style={detailStyle.modalBtnContainer}>
                                     <TouchableOpacity style={detailStyle.btnModalReturn} onPress={() => this.setModalVisible(!modalVisible)} >
                                         <Icon
                                             name='arrow-circle-o-left'
-                                            size={18}
+                                            size={15}
                                             style={detailStyle.btnReturnIcon}
                                         />
-                                        <Text style={detailStyle.btnReturnText}>Return</Text>
+                                        <Text style={detailStyle.btnReturnText}>Close</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={detailStyle.btnModalCart} onPress={() => handleViewCart()} >
                                         <Text style={detailStyle.btnBuyText}>View cart</Text>
                                         <Icon
                                             name='shopping-cart'
-                                            size={18}
+                                            size={15}
                                             style={detailStyle.btnBuyIcon}
                                         />
                                     </TouchableOpacity>                                    
@@ -62,7 +63,7 @@ class Detail extends Component {
                     <View style={detailStyle.coverContainer}></View>
                     <View style={detailStyle.mainContainer}>
                         <View style={detailStyle.titleInfoView} >
-                            <Text style={detailStyle.albumTitle} >Starboy</Text>
+                            <Text style={detailStyle.albumTitle}>{name}</Text>
                             <TouchableOpacity style={detailStyle.btnAdd} onPress={() => this.setModalVisible(true)} >
                                 <Text style={detailStyle.btnAddText} >Add to cart</Text>
                                 <Icon
@@ -73,10 +74,10 @@ class Detail extends Component {
                             </TouchableOpacity>                            
                         </View>
                         <View style={detailStyle.albumInfoView}>
-                            <Text style={detailStyle.albumArtist}>The Weeknd</Text>
-                            <Text style={detailStyle.albumPrice}>U$ 9.99</Text>
+                            <Text style={detailStyle.albumArtist}>{artist}</Text>
+                            <Text style={detailStyle.albumPrice}>{price}</Text>
                         </View>
-                        <Text style={detailStyle.albumDesc}>Starboy is the third studio album by Canadian singer-songwriter the Weeknd, released on November 25, 2016, through XO and Republic Records. It features guest appearances from Daft Punk, Lana Del Rey, Kendrick Lamar, and Future. As the album's executive producers, the Weeknd and Doc McKinney enlisted a variety of producers such as Diplo, Cashmere Cat, Metro Boomin, Frank Dukes, and Labrinth, among others. Starboy is the third studio album by Canadian singer-songwriter the Weeknd, released on November 25, 2016, through XO and Republic Records. It features guest appearances from Daft Punk, Lana Del Rey, Kendrick Lamar, and Future. As the album's executive producers, the Weeknd and Doc McKinney enlisted a variety of producers such as Diplo, Cashmere Cat, Metro Boomin, Frank Dukes, and Labrinth, among others. </Text>
+                        <Text style={detailStyle.albumDesc}>{description}</Text>
                         <View style={detailStyle.floatingAction}>
                             <TouchableOpacity style={detailStyle.btnReturn} onPress={() => this.props.navigation.navigate('List')}>
                                 <Icon

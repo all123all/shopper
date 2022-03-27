@@ -1,37 +1,39 @@
 import React from 'react';
 import { SafeAreaView, View, Text, Alert } from "react-native"
-import { loginStyle } from "./Login.Style"
+import { registerStyle } from "./Register.Style"
 import { Button, Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 // import { useEffect, useState } from "react";
-import {db} from "../../firebase";
-import {collection, getDocs} from "firebase/firestore";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../../firebase';
 
-function Login({navigation}) {
+function Register({navigation}) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-
-    const handleLogin = () => {
-        signInWithEmailAndPassword(auth, email, password)
+    
+    const handleCreateAccount = () => {
+        createUserWithEmailAndPassword(auth, email, password)
         .then((userCredentials) => {
+            console.log('Success!');
             const user = userCredentials.user;
             console.log(user);
-            navigation.navigate('UserNavigator');
+            Alert.alert('Success! Now you have to login using your Email and Password.');
+            navigation.navigate('Login');
         })
         .catch(error => {
+            console.log(error);
             Alert.alert(error.message)
         })
     }
+
     return(
-        <SafeAreaView style={loginStyle.safeAreaView} >
-            <View style={loginStyle.mainContainer} >
-                <View style={loginStyle.logoContainer} >
-                    <Icon style={loginStyle.logoIcon} name="music" color={"#2288dc"} size={50} />
-                    <Text style={loginStyle.logoText} >Shopper</Text>
+        <SafeAreaView style={registerStyle.safeAreaView} >
+            <View style={registerStyle.mainContainer} >
+                <View style={registerStyle.logoContainer} >
+                    <Icon style={registerStyle.logoIcon} name="music" color={"#2288dc"} size={50} />
+                    <Text style={registerStyle.logoText} >Shopper</Text>
                 </View>
-                <View style={loginStyle.inputContainer} >
+                <View style={registerStyle.inputContainer} >
                     <Input
                         placeholder='Email'
                         keyboardType="email-address"
@@ -42,6 +44,7 @@ function Login({navigation}) {
                                 color='#2288dc'/>
                         }
                         onChangeText={(text) => setEmail(text)}
+                        
                     />
                     <Input
                         placeholder="Password"
@@ -53,28 +56,19 @@ function Login({navigation}) {
                                 color='#2288dc'/>
                         }
                         onChangeText={(text) => setPassword(text)}
+                        min
                     />
                 </View>
-                <View style={loginStyle.btnContainer} >
+                <View style={registerStyle.btnContainer} >
                     <Button
-                        title="Login"
-                        buttonStyle={loginStyle.loginBtn}
-                        onPress={handleLogin}
-                    />
-                    <Button
-                        title="Register"
-                        buttonStyle={loginStyle.createBtn}
-                        onPress={() => navigation.navigate('Register')}
-                    />
-                    <Button
-                        title="I'm an Admin"
-                        buttonStyle={loginStyle.forgotBtn}
-                        onPress={() => navigation.navigate('Admin')}
-                        titleStyle={{color: '#696969'}}
+                        title="Create"
+                        buttonStyle={registerStyle.loginBtn}
+                        // onPress={() => navigation.navigate('Login')}
+                        onPress={handleCreateAccount}
                     />
                 </View>
             </View>
         </SafeAreaView>
     )
 }
-export default Login;
+export default Register;

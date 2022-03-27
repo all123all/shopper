@@ -91,7 +91,7 @@ export const detailStyle = StyleSheet.create({
     btnReturnText: {
         color: '#fff',
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: 16
     },
     btnBuy: {
         backgroundColor: '#82b440',
@@ -108,7 +108,7 @@ export const detailStyle = StyleSheet.create({
     btnBuyText: {
         color: '#fff',
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: 16
     },
     centeredView: {
         flex: 1,
