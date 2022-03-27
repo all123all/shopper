@@ -17,8 +17,8 @@ Steps:
 - [x] Secondary Screens;
 - [x] Navigation using React Navigation;
 - [x] Common user and admin account;
-- [] Cart system working;
-- [] UI/UX adjustments;
+- [ ] Cart system working;
+- [ ] UI/UX adjustments;
 
 
 ## About this project
