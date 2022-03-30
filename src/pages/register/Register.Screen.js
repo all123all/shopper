@@ -3,13 +3,15 @@ import { SafeAreaView, View, Text, Alert } from "react-native"
 import { registerStyle } from "./Register.Style"
 import { Button, Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-// import { useEffect, useState } from "react";
 import {createUserWithEmailAndPassword} from 'firebase/auth';
-import {auth} from '../../firebase';
+import {auth, db} from '../../firebase';
+import { getDocs, collection, addDoc } from "firebase/firestore";
+import firestore from 'firebase/firestore'
 
 function Register({navigation}) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const userCollectionRef = collection(db, 'user');
     
     const handleCreateAccount = () => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -17,6 +19,10 @@ function Register({navigation}) {
             console.log('Success!');
             const user = userCredentials.user;
             console.log(user);
+            addDoc(userCollectionRef, {
+                email: email,
+                password: password
+            })
             Alert.alert('Success! Now you have to login using your Email and Password.');
             navigation.navigate('Login');
         })

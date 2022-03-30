@@ -57,17 +57,30 @@ export const productStyle = StyleSheet.create({
     userCard: {
         marginTop: '2%'
     },
-    albumInfo: {
-
+    
+    albumCard: {
+        marginBottom: 10,
+    },
+    albumCover: {
+        width: 75,
+        height: 75
     },
     albumName: {
-
+        fontSize: 18
     },
     albumArtist: {
-
+        fontWeight: "bold",
+        color: "gray"
     },
     albumPrice: {
-
+        color: "green"
+    },
+    albumAddCardIcon: {
+        color: "#2288dc",
+        alignSelf: 'flex-end'
+    },
+    deleteBtn: {
+        padding: '3%'
     },
 })
 
