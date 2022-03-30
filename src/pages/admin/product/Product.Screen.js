@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity, Image, ScrollView, ActivityIndicator, Ale
 import { useEffect, useState } from "react";
 import { Input, Divider, ListItem, Icon } from 'react-native-elements';
 import { productStyle } from './Product.Style';
-import { getDocs, collection, addDoc } from "firebase/firestore";
+import { getDocs, collection, addDoc, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import firestore from 'firebase/firestore'
 
@@ -41,6 +41,16 @@ export default function Product({navigation}) {
         .then(() => {
             Alert.alert('New album added!');
             navigation.navigate('Admin')
+        })
+    }
+
+    function deleteProduct(albumId){
+        const docRef = doc(db, 'album', albumId)
+        console.log(albumId);
+        deleteDoc(docRef)
+        .then(() => {
+            Alert.alert('Album deleted!s');
+            navigation.navigate('Admin');
         })
     }
     return (
@@ -91,7 +101,7 @@ export default function Product({navigation}) {
                                 <Text style={productStyle.albumPrice} >U$ {album.price}</Text>
                             </View>
                         </ListItem.Content>
-                        <TouchableOpacity onPress={() => {}} style={productStyle.deleteBtn}>
+                        <TouchableOpacity onPress={() => deleteProduct(album.id)} style={productStyle.deleteBtn}>
                                 <Icon
                                     name="delete"
                                     size={30}

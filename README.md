@@ -12,13 +12,20 @@ expo start
 In the terminal you'll see a QRCode, open you Expo app in your smartphone and read the QRCode. The app will open automatically. You don't need to worry about `API_KEY`, i just left that on repository to make the app work easier, so you don't need to create an `API_KEY` by yourself.
 
 Steps:
-- [x] Primary Screens;
-- [x] Authentication with Firebase;
-- [x] Secondary Screens;
-- [x] Navigation using React Navigation;
-- [x] Common user and admin account;
-- [ ] Cart system working;
-- [ ] UI/UX adjustments;
+- [x] Autenticação;
+- [x] Produtos (listagem, adição, edição remoção);
+- [ ] Compras (identificar quem comprou, lista de produtos na compra);
+- [x] Usuários (listagem, adição, edição e remoção);
+- [x] Uma tela de login;
+- [ ] Um carrinho global (tem a tela, mas só lista e não compra);
+- [x] Tela de listagem de produtos: a lista de produtos deve vir da api;
+- [x] Tela de detalhamento do produto: incluir o mesmo no carrinho;
+- [x] Tela de detalhamento do carrinho;
+- [x] Opções de incrementar ou decrementar quantidade de um produto no carrinho:
+remover produto do carrinho, finalizar compra (tem a tela, mas não está indo pro banco de dados);
+- [x] Opção de logout;
+- [x] Gerenciamento de estado com gerenciador da preferência do usuário
+- [x] Possibilidade de navegação entre as telas
 
 
 ## About this project
