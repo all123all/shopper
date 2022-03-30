@@ -17,8 +17,15 @@ function Login({navigation}) {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredentials) => {
             const user = userCredentials.user;
+            const userEmail = email
+            console.log(userEmail)
             console.log(user);
-            navigation.navigate('UserNavigator');
+            navigation.navigate('UserNavigator', {
+                screen: 'List',
+                params: {
+                    userEmail: userEmail
+                }
+            });
         })
         .catch(error => {
             Alert.alert(error.message)

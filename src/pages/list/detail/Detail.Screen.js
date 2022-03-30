@@ -3,6 +3,7 @@ import { View, ScrollView, TouchableOpacity, ImageBackground, Modal } from "reac
 import { detailStyle } from "./Detail.Style"
 import { Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import firestore from 'firebase/firestore';
 
 class Detail extends Component {
     state = {
@@ -19,6 +20,16 @@ class Detail extends Component {
         const handleViewCart = () => {
             this.setModalVisible(!modalVisible)
             this.props.navigation.navigate('Cart')
+        }
+
+        const addToCart = () => {
+            this.setModalVisible(true)
+            firestore()
+            .collection('cart')
+            .add({
+                name,
+                price
+            })
         }
         return(
             <ImageBackground source={coverImg} resizeMode="cover"  style={detailStyle.bgImg}>
@@ -64,7 +75,7 @@ class Detail extends Component {
                     <View style={detailStyle.mainContainer}>
                         <View style={detailStyle.titleInfoView} >
                             <Text style={detailStyle.albumTitle}>{name}</Text>
-                            <TouchableOpacity style={detailStyle.btnAdd} onPress={() => this.setModalVisible(true)} >
+                            <TouchableOpacity style={detailStyle.btnAdd} onPress={addToCart} >
                                 <Text style={detailStyle.btnAddText} >Add to cart</Text>
                                 <Icon
                                     name='shopping-cart'
